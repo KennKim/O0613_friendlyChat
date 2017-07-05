@@ -11,8 +11,6 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.project.tk.o0613_friendlychat.R;
 
-import uk.co.senab.photoview.PhotoViewAttacher;
-
 public class ImageActivity extends AppCompatActivity {
     private ImageView iv;
     private ProgressBar progressBar;
@@ -42,8 +40,8 @@ public class ImageActivity extends AppCompatActivity {
                     }
                 })
                 .into(iv);
-        PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(iv);
-        photoViewAttacher.update();
+//        PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(iv);
+//        photoViewAttacher.update();
 
         progressBar=(ProgressBar)findViewById(R.id.progressBar);
 
