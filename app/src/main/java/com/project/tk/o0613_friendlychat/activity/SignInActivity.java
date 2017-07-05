@@ -29,9 +29,10 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.project.tk.o0613_friendlychat.R;
+import com.project.tk.o0613_friendlychat.activity.chatroom.ChatRoomActivity;
 import com.project.tk.o0613_friendlychat.activity.user_list.UserListActivity;
 import com.project.tk.o0613_friendlychat.model.User;
-import com.project.tk.o0613_friendlychat.util.SharedPreferenceUtil;
+import com.project.tk.o0613_friendlychat.util.SharedPre;
 
 public class SignInActivity extends AppCompatActivity
         implements GoogleApiClient.OnConnectionFailedListener,
@@ -49,7 +50,6 @@ public class SignInActivity extends AppCompatActivity
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mReference;
     private FirebaseDatabase mFirebaseDatabase;
-    private static final String CHILD_USER = "users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class SignInActivity extends AppCompatActivity
             case R.id.btn_login:
                 name = etInput.getText().toString();
                 if (name.trim().length() > 0) {
-                    insertDB(name,null);
+//                    insertDB(name, null);
                 } else {
                     Snackbar.make(etInput, R.string.need_name, Snackbar.LENGTH_SHORT).show();
                 }
@@ -102,16 +102,21 @@ public class SignInActivity extends AppCompatActivity
         }
     }
 
-    private void insertDB(final String name, String faceUrl) {
-        SharedPreferenceUtil.getInstance().putString(SharedPreferenceUtil.DISPLAY_NAME, name);
-        User user = new User(null, name, faceUrl, null, null);
-        mReference.child(CHILD_USER)
-                .push()
+    private void insertDB(FirebaseUser mFirebaseUser) {
+        String displayName =mFirebaseUser.getDisplayName();
+        String faceUrl = mFirebaseUser.getPhotoUrl().toString();
+        String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        SharedPre.getInstance().putString(SharedPre.UID, mFirebaseUser.getUid());
+        SharedPre.getInstance().putString(SharedPre.DISPLAY_NAME, displayName);
+
+        User user = new User(null, uID, displayName, faceUrl, null, null);
+        mReference.child(User.CHILD_USERS)
+                .child(uID)
                 .setValue(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(SignInActivity.this,R.string.your_name_is + name, Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignInActivity.this, R.string.your_name_is + name, Toast.LENGTH_LONG).show();
                         startActivity(new Intent(SignInActivity.this, UserListActivity.class));
                         finish();
                     }
@@ -125,7 +130,7 @@ public class SignInActivity extends AppCompatActivity
             Toast.makeText(this, "Welcome " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
             // Go back to the main activity
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, ChatRoomActivity.class));
         }
     }
 
@@ -169,7 +174,7 @@ public class SignInActivity extends AppCompatActivity
                 } else {
                     FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
                     if (mFirebaseUser != null) {
-                        insertDB(mFirebaseUser.getDisplayName(), mFirebaseUser.getPhotoUrl().toString());
+                        insertDB(mFirebaseUser);
                     }
                 }
             }

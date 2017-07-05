@@ -1,30 +1,54 @@
 package com.project.tk.o0613_friendlychat.model;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 /**
  * Created by conscious on 2017-06-15.
  */
 
 public class User {
+
+    public static final String CHILD_USERS = "users";
+
     private String key;
+    private String uID;
     private String userName;
     private String faceUrl;
     private Boolean isDeleted;
     private String insertedDate;
     private String updatedDate;
+    private String fcmToken;
     private int type=10;
 
     public User() {
     }
 
-    public User(String key, String userName, String faceUrl, String insertedDate, String updatedDate) {
+    public User(String key, String uID, String userName, String faceUrl, String insertedDate, String updatedDate) {
         this.key = key;
+        this.uID = uID;
         this.userName = userName;
         this.faceUrl = faceUrl;
         this.insertedDate = insertedDate;
         this.updatedDate = updatedDate;
         this.isDeleted = false;
+        this.fcmToken = FirebaseInstanceId.getInstance().getToken();
     }
 
+    public String getuID() {
+        return uID;
+    }
+
+    public void setuID(String uID) {
+        this.uID = uID;
+    }
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
+    }
     public int getType() {
         return type;
     }

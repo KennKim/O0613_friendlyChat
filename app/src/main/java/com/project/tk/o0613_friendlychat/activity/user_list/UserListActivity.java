@@ -6,6 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,18 +15,19 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.project.tk.o0613_friendlychat.R;
-import com.project.tk.o0613_friendlychat.activity.ChatListActivity;
+import com.project.tk.o0613_friendlychat.activity.Settings;
+import com.project.tk.o0613_friendlychat.activity.chat_list.ChatRoomListActivity;
 import com.project.tk.o0613_friendlychat.model.User;
-import com.project.tk.o0613_friendlychat.util.SharedPreferenceUtil;
+import com.project.tk.o0613_friendlychat.util.SharedPre;
 
 public class UserListActivity extends AppCompatActivity {
 
     private static final String TAG = "UserListActivity";
-    public static final String CHILD_USERS = "users";
 
     private TextView tv1;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager linearLayoutManager;
+    private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mReference;
     private FirebaseRecyclerAdapter mAdapter;
 
@@ -36,38 +39,45 @@ public class UserListActivity extends AppCompatActivity {
 
 
         tv1 = (TextView) findViewById(R.id.tv1);
-        tv1.setText(SharedPreferenceUtil.getInstance().getString(SharedPreferenceUtil.DISPLAY_NAME,null));
+        tv1.setText(SharedPre.getInstance().getString(SharedPre.DISPLAY_NAME,null));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserListActivity.this, ChatListActivity.class));
+                startActivity(new Intent(UserListActivity.this, ChatRoomListActivity.class));
             }
         });
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         linearLayoutManager = new LinearLayoutManager(this);
 //        linearLayoutManager.setStackFromEnd(true);
-
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
         mReference = FirebaseDatabase.getInstance().getReference();
-        mAdapter = new UserListAdapter(UserListActivity.this,User.class, R.layout.item_user_list, UserListViewHolder.class, mReference.child(CHILD_USERS));
-        /*mAdapter.setMyViewHolderClickListener(new UserListViewHolder.MyViewHolderClickListener() {
-            @Override
-            public void onFaceClick(View view, int position) {
-                Toast.makeText(UserListActivity.this,"onFaceClick",Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onNameClick(View view, int position) {
-                Toast.makeText(UserListActivity.this,"NameCNameCNameC",Toast.LENGTH_LONG).show();
-            }
-        });*/
+        mAdapter = new UserListAdapter(UserListActivity.this,User.class, R.layout.item_user_list, UserListViewHolder.class, mReference.child(User.CHILD_USERS));
 
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.action_settings:
+                startActivity(new Intent(UserListActivity.this, Settings.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
 
 
@@ -91,9 +101,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.project.tk.o0613_friendlychat.R;
-import com.project.tk.o0613_friendlychat.activity.ChatListActivity;
+import com.project.tk.o0613_friendlychat.activity.chat_list.ChatRoomListActivity;
 import com.project.tk.o0613_friendlychat.model.User;
-import com.project.tk.o0613_friendlychat.util.SharedPreferenceUtil;
+import com.project.tk.o0613_friendlychat.util.SharedPre;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -128,13 +138,13 @@ public class UserListActivity extends AppCompatActivity {
 
 
         tv1 = (TextView) findViewById(R.id.tv1);
-        tv1.setText(SharedPreferenceUtil.getInstance().getString(SharedPreferenceUtil.DISPLAY_NAME,null));
+        tv1.setText(SharedPre.getInstance().getString(SharedPre.DISPLAY_NAME,null));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserListActivity.this, ChatListActivity.class));
+                startActivity(new Intent(UserListActivity.this, ChatRoomListActivity.class));
             }
         });
 

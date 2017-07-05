@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">O0613_friendlyChat</string>
+
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default_notification_channel_name" translatable="true">News</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="welcome_msg">Welcome!</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="contacts_permission_rationale">Access to account information is required to sign in.</string>
+    <string name="invite_menu_label">Invite</string>
+    <string name="invitation_message">Please join me for a friendly chat</string>
+    <string name="invitation_cta">Call to action</string>
+    <string name="invitation_title">Friendly Chat Invite</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="fresh_config">Fresh Config</string>
+    <string name="cause_crash">Cause Crash</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="hint_input_name">닉네임을 적어주세요</string>
+    <string name="login_to_chat">로그인</string>
+    <string name="need_name">이름을 안 적었짜나요..</string>
+    <string name="your_name_is">닉네임은 </string>
+    <string name="user_list">현재 채팅중인 회원 </string>
+    <string name="chat_list">현재 진행중인 채팅 </string>
+    <string name="title_activity_chat_list">ChatListActivity</string>
+    <string name="action_settings">action_settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+    <string name="app_name2">누가바</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="user_name">userName</string>
+
+
+    <!--preference settings-->
+    <!--pref category user-->
+    <string name="pref_cate_title_use_user_name">사용자 설정</string>
+
+    <string name="pref_title_use_user_name">사용자 이름 사용</string>
+    <string name="pref_key_use_user_name">useUserName</string>
+    <string name="pref_sum_off_use_name">사용자의 이름을 사용하지 않습니다</string>
+    <string name="pref_sum_on_use_name">사용자의 이름을 사용합니다</string>
+
+    <string name="pref_title_user_name">사용자 이름 설정</string>
+    <string name="pref_key_user_name">userName</string>
+    <string name="pref_default_user_name">userName</string>
+
+    <string name="pref_title_user_name_open">이름 공개 범위</string>
+    <string name="pref_key_user_name_open">userNameOpen</string>
+
+    <!--pref category ringtone-->
+    <string name="pref_cate_title_msg">메세지 알림</string>
+    <string name="pref_title_ringtone_mute">알림음 설정</string>
+    <string name="pref_key_ringtone_mute">ringtoneMute</string>
+    <string name="pref_sum_ringtone_mute">벨소리 설정됨</string>
+
+    <string name="pref_title_set_ringtone">알림소리</string>
+    <string name="pref_key_set_ringtone">ringtone</string>
+    <string name="pref_default_set_ringtone">default Sound</string>
+
+    <!--pref category udpate-->
+    <string name="pref_cate_title_update">자동 업데이트</string>
+
+    <string name="pref_title_auto_update">자동 업데이트</string>
+    <string name="pref_key_auto_update">autoUpdate</string>
+    <string name="pref_sum_auto_update">자동 업데이트를 설정합니다</string>
+
+    <string name="pref_title_autoUpdate_noti">알림 사용</string>
+    <string name="pref_key_autoUpdate_noti">useUpdateNofiti</string>
+    <string name="pref_sum_autoUpdate_noti">업데이트후 알림을 띄웁니다</string>
+
+    <string name="pref_title_autoUpdate_ringtone">알림 소리</string>
+    <string name="pref_key_autoUpdate_ringtone">autoUpdateRingtone</string>
+
+    <!--pref category developer-->
+    <string name="pref_cate_app_info">어플 정보</string>
+
+    <string name="pref_title_developer">개발자 정보</string>
+    <string name="pref_key_developer">developerInfo</string>
+    <string name="pref_sum_developer">개발자 정보를 확인합니다</string>
+
+    <string name="pref_title_email">메일 보내기</string>
+    <string name="pref_key_email">sendEmail</string>
+    <string name="pref_sum_email">개발자에게 메일을 보냅니다</string>
+
+    <!--pref category test1-->
+    <string name="pref_key_myPrefTest">친구공개</string>
+
+
+    <!--pref category test2-->
+    <string name="pref_key_myPrefTest2">친구공개</string>
+
+
+    <!--preference array strings-->
+    <string name="open_all">모두에게 공개</string>
+    <string name="open_friend">친구공개</string>
+    <string name="open_me">나만 보기</string>
+    <string name="sub2">서브메뉴2</string>
+    <string name="sub3">서브메뉴3</string>
+    <string name="share">share</string>
+    <string name="ringtone_name">default sound</string>
+    <string name="basic_ringtone">기본 알림음</string>
+</resources>
