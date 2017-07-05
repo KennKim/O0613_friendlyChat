@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="@string/pref_cate_title_use_user_name">
+        <CheckBoxPreference
+            android:key="@string/pref_key_use_user_name"
+            android:defaultValue="false"
+            android:summaryOff="@string/pref_sum_off_use_name"
+            android:summaryOn="@string/pref_sum_on_use_name"
+            android:title="@string/pref_title_use_user_name" />
+
+        <EditTextPreference
+            android:key="@string/pref_key_user_name"
+            android:defaultValue="@string/pref_default_user_name"
+            android:dependency="@string/pref_key_use_user_name"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_user_name" />
+
+        <ListPreference
+            android:key="@string/pref_key_user_name_open"
+            android:defaultValue="0"
+            android:dependency="@string/pref_key_use_user_name"
+            android:entries="@array/userNameOpen"
+            android:entryValues="@array/userNameOpen_values"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_title_user_name_open" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/pref_cate_title_msg">
+        <SwitchPreference
+            android:key="@string/pref_key_ringtone_mute"
+            android:defaultValue="true"
+            android:summary="@string/pref_sum_ringtone_mute"
+            android:switchTextOff="OFF"
+            android:switchTextOn="ON"
+            android:title="@string/pref_title_ringtone_mute" />
+
+        <RingtonePreference
+            android:key="@string/pref_key_set_ringtone"
+            android:defaultValue="@string/pref_default_set_ringtone"
+            android:dependency="@string/pref_key_ringtone_mute"
+            android:ringtoneType="notification"
+            android:showSilent="true"
+            android:title="@string/pref_title_set_ringtone" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/pref_cate_title_update">
+        <SwitchPreference
+            android:key="@string/pref_key_auto_update"
+            android:defaultValue="false"
+            android:summary="@string/pref_sum_auto_update"
+            android:switchTextOff="OFF"
+            android:switchTextOn="ON"
+            android:title="@string/pref_title_auto_update" />
+
+        <CheckBoxPreference
+            android:key="@string/pref_key_autoUpdate_noti"
+            android:defaultValue="false"
+            android:dependency="autoUpdate"
+            android:summary="@string/pref_sum_autoUpdate_noti"
+            android:title="@string/pref_title_autoUpdate_noti" />
+
+        <RingtonePreference
+            android:key="@string/pref_key_autoUpdate_ringtone"
+            android:defaultValue="@string/pref_key_set_ringtone"
+            android:dependency="@string/pref_key_autoUpdate_noti"
+            android:ringtoneType="notification"
+            android:showSilent="true"
+            android:title="@string/pref_title_autoUpdate_ringtone" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/pref_cate_app_info">
+        <Preference
+            android:summary="@string/pref_sum_developer"
+            android:title="@string/pref_title_developer">
+            <intent
+                android:targetClass="com.example.preference.MadeByActivity"
+                android:targetPackage="com.example.preference" />
+        </Preference>
+        <Preference
+            android:summary="@string/pref_sum_email"
+            android:title="@string/pref_title_email">
+            <intent
+                android:action="android.intent.action.SENDTO"
+                android:data="mailto:dnf126@gmail.com" />
+        </Preference>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="나의 테스트">
+        <Preference
+            android:key="myPrefTest"
+            android:summary="이건 그냥 테스트다."
+            android:title="개발자 정보" />
+        <Preference
+            android:key="myPrefTest2"
+            android:summary="두번째 테스트입니다"
+            android:title="두번째 테스트" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
