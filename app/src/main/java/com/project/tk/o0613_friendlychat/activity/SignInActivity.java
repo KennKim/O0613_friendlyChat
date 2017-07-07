@@ -32,6 +32,7 @@ import com.project.tk.o0613_friendlychat.R;
 import com.project.tk.o0613_friendlychat.activity.chatroom.ChatRoomActivity;
 import com.project.tk.o0613_friendlychat.activity.user_list.UserListActivity;
 import com.project.tk.o0613_friendlychat.model.User;
+import com.project.tk.o0613_friendlychat.util.MyTime;
 import com.project.tk.o0613_friendlychat.util.SharedPre;
 
 public class SignInActivity extends AppCompatActivity
@@ -105,11 +106,11 @@ public class SignInActivity extends AppCompatActivity
     private void insertDB(FirebaseUser mFirebaseUser) {
         String displayName =mFirebaseUser.getDisplayName();
         String faceUrl = mFirebaseUser.getPhotoUrl().toString();
-        String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String uID = mFirebaseUser.getUid();
         SharedPre.getInstance().putString(SharedPre.UID, mFirebaseUser.getUid());
         SharedPre.getInstance().putString(SharedPre.DISPLAY_NAME, displayName);
 
-        User user = new User(null, uID, displayName, faceUrl, null, null);
+        User user = new User(null, uID, displayName, faceUrl, MyTime.getLongGMT(), null);
         mReference.child(User.CHILD_USERS)
                 .child(uID)
                 .setValue(user)

@@ -40,10 +40,6 @@ public class ImageActivity extends AppCompatActivity {
                     }
                 })
                 .into(iv);
-//        PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(iv);
-//        photoViewAttacher.update();
-
-        progressBar=(ProgressBar)findViewById(R.id.progressBar);
 
     }
 }

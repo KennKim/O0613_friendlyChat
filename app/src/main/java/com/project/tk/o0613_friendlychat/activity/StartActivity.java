@@ -22,6 +22,7 @@ import com.project.tk.o0613_friendlychat.R;
 import com.project.tk.o0613_friendlychat.activity.chat_list.ChatRoomListActivity;
 import com.project.tk.o0613_friendlychat.activity.user_list.UserListActivity;
 import com.project.tk.o0613_friendlychat.fcm.MyStr;
+import com.project.tk.o0613_friendlychat.util.MyTime;
 import com.project.tk.o0613_friendlychat.util.SharedPre;
 
 public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -54,6 +55,8 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         getServerKey();
         initStart();
+
+        new MyTime(getApplicationContext());
     }
 
     private void getServerKey() {

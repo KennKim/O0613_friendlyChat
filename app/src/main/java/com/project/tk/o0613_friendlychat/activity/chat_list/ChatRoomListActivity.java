@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.project.tk.o0613_friendlychat.R;
 import com.project.tk.o0613_friendlychat.activity.chatroom.ChatRoomActivity;
+import com.project.tk.o0613_friendlychat.util.MyTime;
 
 public class ChatRoomListActivity extends AppCompatActivity {
 
@@ -27,6 +28,7 @@ public class ChatRoomListActivity extends AppCompatActivity {
                 startActivity(new Intent(ChatRoomListActivity.this, ChatRoomActivity.class));
             }
         });
+
     }
 
 }

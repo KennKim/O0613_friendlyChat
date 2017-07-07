@@ -111,4 +111,18 @@
     <string name="share">share</string>
     <string name="ringtone_name">default sound</string>
     <string name="basic_ringtone">기본 알림음</string>
+
+
+
+    <!--MyTime elapsed time-->
+    <string name="elapsed_seconds">초 전에 업로드</string>
+    <string name="elapsed_minutess">분 전에 업로드</string>
+    <string name="elapsed_hours">시간 전에 업로드</string>
+    <string name="elapsed_days">일 전에 업로드</string>
+    <string name="elapsed_weeks">주 전에 업로드</string>
+    <string name="elapsed_months">달 전에 업로드</string>
+    <string name="elapsed_years">년 전에 업로드</string>
+
+
+
 </resources>

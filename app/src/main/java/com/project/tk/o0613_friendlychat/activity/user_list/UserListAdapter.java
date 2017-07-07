@@ -19,6 +19,7 @@ import com.project.tk.o0613_friendlychat.R;
 import com.project.tk.o0613_friendlychat.activity.chatroom.ChatRoomActivity;
 import com.project.tk.o0613_friendlychat.model.ChatRoom;
 import com.project.tk.o0613_friendlychat.model.User;
+import com.project.tk.o0613_friendlychat.util.MyTime;
 
 /**
  * Created by conscious on 2017-06-19.
@@ -93,7 +94,7 @@ class UserListAdapter extends FirebaseRecyclerAdapter<User, UserListViewHolder> 
             viewHolder.tvUserName.setText(user.getUserName());
         }
         if (user.getInsertedDate() != null) {
-            viewHolder.tvInsertedDate.setText(user.getInsertedDate());
+            viewHolder.tvInsertedDate.setText(MyTime.getElapsedTime(user.getInsertedDate()));
         }
         if (user.getFaceUrl() == null) {
             viewHolder.civUserFace.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_account_circle_black_36dp));
